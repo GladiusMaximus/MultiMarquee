@@ -48,8 +48,8 @@
 			context.font = "bold 300px Arial";
 			context.fillText("Text", 0, 500);
 			io.on('connection', function (socket) {
-				socket.on("time", function(offest){
-					displayText(offset);
+				socket.on("time", function(object){
+					displayText(object.offset);
 				}
 			});
 		</script>
