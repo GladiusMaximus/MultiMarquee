@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "express": "^4.10.2",
+    "lodash-node": "^2.4.1",
     "socket.io": "^1.2.0"
   }
 }
