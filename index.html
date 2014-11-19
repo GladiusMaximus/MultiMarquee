@@ -6,6 +6,7 @@
 	</style>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
 	<head>
 
 	</head>
@@ -31,14 +32,7 @@
 			}
 		</script>
 		<script>
-			var express = require('express');
-			var app = express();
-			var server = require('http').createServer(app);
-			var io = require('../..')(server);
-			var port = process.env.PORT || 3000;
-			server.listen(port, function () {
-				console.log('Server listening at port %d', port);
-			});
+			var socket = io();
 			var canvas = document.getElementById('canvas'),
 			context = canvas.getContext('2d');
 			canvas.width = window.innerWidth;
@@ -47,10 +41,9 @@
 			context.fillStyle = "purple";
 			context.font = "bold 300px Arial";
 			context.fillText("Text", 0, 500);
-			io.on('connection', function (socket) {
-				socket.on("time", function(object){
-					displayText(object.offset);
-				}
+			displayText(200);
+			socket.on("time", function(object){
+				displayText(object.offset);
 			});
 		</script>
 	</body>
